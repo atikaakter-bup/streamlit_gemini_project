@@ -79,6 +79,6 @@ if pressed:
         with st.container(border=True):
             st.subheader(f"Quiz {selected_option} difficulty")
 
-            #the portion below will be replaced by API call
-            quizzes= quiz_generator(pil_images,selected_option)
-            st.audio(quizzes)
+             with st.spinner("AI is creating quizzes for you"):
+                 quizzes= quiz_generator(images,selected_option)
+                 st.markdown(quizzes)
