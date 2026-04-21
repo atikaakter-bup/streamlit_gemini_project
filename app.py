@@ -79,6 +79,6 @@ if pressed:
         with st.container(border=True):
             st.subheader(f"Quiz {selected_option} difficulty")
 
-             with st.spinner("AI is creating quizzes for you"):
-                 quizzes= quiz_generator(images,selected_option)
-                 st.markdown(quizzes)
+            with st.spinner("AI is creating quizzes for you"):
+                quizzes= quiz_generator(images,selected_option)
+                st.markdown(quizzes)
