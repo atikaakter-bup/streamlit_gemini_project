@@ -38,6 +38,7 @@ def note_generator(images):
 
 
 def audio_transcription(text):
+    
     speech = gTTS(text,lang='en',slow=False)  #lang='bn' fir bangla text
     audio_buffer=io.BytesIO()  #this saves in RAM
     speech.write_to_fp(audio_buffer)
@@ -47,10 +48,17 @@ def audio_transcription(text):
 
 def quiz_generator(images,difficulty):
 
+   if images:
+        pil_images = []
+        for img in images:
+            pil_img=Image.open(img)
+            pil_images.append(pil_img)
+            
+
     prompt=f"generate 3 quizes based on the {difficulty}. Make sure to add marks"
     response = client.models.generate_content(
         model = "gemini-3-flash-preview",
-        contents=[images,prompt]
+        contents=[pil_images,prompt]
     )
     return response.text
 
